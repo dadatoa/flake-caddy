@@ -1,27 +1,27 @@
 {
-  description = "A very basic flake";
+  description = "my epic vims collection";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
   outputs = { self, nixpkgs }:
-  let 
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+  let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
   in
   {
-    devShells.${system}.default = {
-      pkgs.mkShell {
-        buildInputs = [ 
-          pkgs.caddy
+    bob =
+      pkgs.mkShell
+        {
+          buildInputs = [
+            pkgs.neovim
+            pkgs.vim
           ];
 
-        shellHook = ''
-          echo "hello"
-          fish
-        ''
-      };
-    };
+          shellHook = ''
+            echo "hello mom"
+          '';
+        };
   };
 }

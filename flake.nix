@@ -11,16 +11,16 @@
       pkgs = nixpkgs.legacyPackages.${system};
   in
   {
-    bob =
+    caddy =
       pkgs.mkShell
         {
           buildInputs = [
-            pkgs.neovim
-            pkgs.vim
+            pkgs.caddy
           ];
 
           shellHook = ''
             echo "hello mom"
+            fish
           '';
         };
   };

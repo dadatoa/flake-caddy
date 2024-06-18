@@ -1,3 +1,13 @@
-localhost:2015 {
-	root * /home/dadato/projects/caddy/www/
+nara17.taila7299.ts.net {
+	reverse_proxy * localhost:8096
+}
+
+nara17.local {
+	acme_server
+	tls internal
+	handle_path /jellyfin/* {
+		reverse_proxy localhost:8096 {
+			header_up Host {localhost}
+		}
+	}
 }
